@@ -67,12 +67,6 @@ body {
     radial-gradient(circle at 85% 15%, color-mix(in srgb, var(--accent2) 18%, transparent), transparent 50%),
     radial-gradient(circle at 50% 90%, color-mix(in srgb, var(--accent3) 12%, transparent), transparent 55%),
     var(--bg-0);
-  animation: drift 22s ease-in-out infinite alternate;
-}
-
-@keyframes drift {
-  0% { filter: hue-rotate(0deg); transform: scale(1); }
-  100% { filter: hue-rotate(12deg); transform: scale(1.04); }
 }
 
 .wrap { max-width: 800px; margin: 0 auto; position: relative; z-index: 1; }
@@ -220,17 +214,16 @@ header p { color: var(--muted); font-size: 16px; margin: 0 auto; max-width: 46ch
   margin: 56px 0;
   font-size: 14.5px;
   padding: 40px 20px;
-  border-radius: 24px;
-  overflow: hidden;
   isolation: isolate;
 }
 
 .status-blobs {
   position: absolute;
-  inset: 0;
+  inset: -40px 0;
   z-index: -1;
-  overflow: hidden;
-  border-radius: inherit;
+  pointer-events: none;
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 25%, transparent 70%);
+  mask-image: radial-gradient(ellipse at center, #000 25%, transparent 70%);
 }
 
 .blob {
