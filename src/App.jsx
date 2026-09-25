@@ -140,11 +140,16 @@ export default function App() {
 
         {loading && (
           <div className="status">
+            <div className="status-blobs">
+              <span className="blob blob-1" />
+              <span className="blob blob-2" />
+              <span className="blob blob-3" />
+            </div>
             <div className="orbit">
               <span />
               <span />
             </div>
-            <div className="status-text">{status.text}</div>
+            <div className="status-text shimmer">{status.text}</div>
             <div className="status-sub">{status.sub}</div>
           </div>
         )}
