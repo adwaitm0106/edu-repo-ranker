@@ -23,6 +23,7 @@ export default function App() {
   const [statusStep, setStatusStep] = useState(0)
   const [error, setError] = useState('')
   const [repos, setRepos] = useState(null)
+  const [roadmap, setRoadmap] = useState('')
   const timersRef = useRef([])
   const inputRef = useRef(null)
 
@@ -44,6 +45,7 @@ export default function App() {
     setLoading(true)
     setError('')
     setRepos(null)
+    setRoadmap('')
     setStatusStep(0)
 
     timersRef.current = STATUS_STEPS.slice(1).map((step, i) =>
@@ -77,6 +79,9 @@ export default function App() {
       }
 
       setRepos([...parsed].sort((a, b) => (b.score || 0) - (a.score || 0)))
+      if (typeof data.roadmap === 'string' && data.roadmap.trim()) {
+        setRoadmap(data.roadmap.trim())
+      }
     } catch (err) {
       setError('Something went wrong: ' + err.message)
     } finally {
@@ -167,6 +172,14 @@ export default function App() {
                 </div>
               </div>
             ))}
+          </div>
+        )}
+
+        {roadmap && (
+          <div className="roadmap">
+            <h2>Suggested study order</h2>
+            <div className="roadmap-sub">K2 Horizon's take on the order to work through these in</div>
+            <pre>{roadmap}</pre>
           </div>
         )}
 
